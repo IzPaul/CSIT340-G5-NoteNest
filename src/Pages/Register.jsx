@@ -34,7 +34,7 @@ export default function Register() {
             <input
               className="input"
               type="text"
-              placeholder="Full Name"
+              placeholder="Username"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
