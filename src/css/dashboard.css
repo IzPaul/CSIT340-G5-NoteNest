@@ -1,0 +1,74 @@
+.dashboard-wrapper {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+  padding: 60px 20px;
+}
+
+.dashboard-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard-content h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.welcome-text {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 48px;
+}
+
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.action-card {
+  all: unset;
+  background: white;
+  padding: 40px 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(74,144,226,0.15);
+}
+
+.action-card .icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.action-card h3 {
+  font-size: 24px;
+  margin: 0 0 12px;
+  color: #1f2937;
+}
+
+.action-card p {
+  color: #6b7280;
+  margin: 0;
+}
+
+.file-preview {
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #86efac;
+  max-width: 500px;
+  margin: 0 auto;
+}

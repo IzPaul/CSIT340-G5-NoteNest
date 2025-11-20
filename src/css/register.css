@@ -1,0 +1,86 @@
+.register-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 40px 20px;
+}
+
+.register-card {
+  background: white;
+  padding: 48px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  min-width: 500px;
+  max-width: 380px;
+}
+
+.register-card h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.register-card p {
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 4px rgba(74,144,226,0.15);
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 16px;
+  background: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primary-btn:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+}
+
+/* Switch auth text */
+.switch-auth {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 24px;
+}
+
+/* create an account, login word is highlighted  */
+.switch-auth span,
+.switch-auth a {
+  color: #4A90E2;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.switch-auth span:hover,
+.switch-auth a:hover {
+  text-decoration: underline;
+}
