@@ -12,7 +12,7 @@ export default function ViewNotes() {
   const { notes } = useNotes();
   const [viewMode, setViewMode] = useState("rendered");
 
-  const note = notes.find((n) => n.id === parseInt(id));
+  const note = notes.find((n) => n.noteId === parseInt(id));
 
   if (!note) {
     return (

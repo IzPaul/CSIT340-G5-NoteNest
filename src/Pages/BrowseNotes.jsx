@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { useNotes } from "../Context/NotesContext.jsx";
+import { notes, useNotes } from "../Context/NotesContext.jsx";
 import Navbar from "../Components/Navbar.jsx";
 import "../css/browseNotes.css";
 import "../css/global.css";
@@ -21,8 +21,8 @@ export default function BrowseNotes() {
     );
   });
 
-  const handleView = (id) => {
-    navigate(`/viewnotes/${id}`);
+  const handleView = (noteId) => {
+    navigate(`/viewnotes/${noteId}`);
   };
 
   const handleDownload = (note) => {
@@ -76,7 +76,7 @@ export default function BrowseNotes() {
               </div>
             ) : (
               filteredNotes.map((note) => (
-                <div key={note.id} className="note-card">
+                <div key={note.Id} className="note-card">
                   <div className="note-content">
                     <div className="note-header">
                       <h3 className="note-title">{note.title}</h3>
@@ -84,11 +84,19 @@ export default function BrowseNotes() {
                     </div>
                     <p className="note-description">{note.description}</p>
                     <div className="note-meta">
-                      <span className="note-date">{note.date}</span>
+                      <span className="note-date">
+                        {note.uploadDate 
+                          ? new Date(note.uploadDate).toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric"
+                            })
+                          : "No date"}
+                      </span>
                     </div>
                   </div>
                   <div className="note-actions">
-                    <button className="view-btn" onClick={() => handleView(note.id)}>
+                    <button className="view-btn" onClick={() => handleView(note.Id)}>
                       View
                     </button>
                     <button className="download-btn" onClick={() => handleDownload(note)}>

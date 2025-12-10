@@ -19,6 +19,7 @@ public class Note {
     private String title;
     private String description;
     private LocalDateTime uploadDate;
+    private String subject;
 
     @Lob
     @Column(columnDefinition = "TEXT")

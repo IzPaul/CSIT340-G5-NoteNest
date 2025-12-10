@@ -27,25 +27,33 @@ export default function Upload() {
       description: description.trim() || "No description provided.",
     };
 
-    if (mode === "upload" && file) {
-      const reader = new FileReader();
-      reader.onload = () => {
+    try{
+      if (mode === "upload" && file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          addNote({
+            ...baseNote,
+            content: `File uploaded: ${file.name}\n\n${reader.result?.slice(0, 500)}...`,
+            fileName: file.name,
+            fileType: file.type,
+            uploadDate: new Date().toISOString(),
+          });
+          navigate("/browse");
+        };
+        reader.readAsText(file);
+      } 
+      else if (mode === "write" && title.trim() && subject.trim() && noteContent.trim()) {
         addNote({
           ...baseNote,
-          content: `File uploaded: ${file.name}\n\n${reader.result?.slice(0, 500)}...`,
-          fileName: file.name,
-          fileType: file.type,
+          content: noteContent.trim(),
+          uploadDate: new Date().toISOString(),
         });
         navigate("/browse");
-      };
-      reader.readAsText(file);
-    } 
-    else if (mode === "write" && title.trim() && subject.trim() && noteContent.trim()) {
-      addNote({
-        ...baseNote,
-        content: noteContent.trim(),
-      });
-      navigate("/browse");
+      }
+
+    }catch (err) {
+      console.error("Save failed: ",err);
+      alert("Failed to save note.");
     }
 
     console.log(mode === "upload" ? "Uploading file..." : "Saving written note...");

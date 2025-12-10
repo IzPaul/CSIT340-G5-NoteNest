@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../api/api";
 import "../css/register.css";
+import "../css/global.css";
 
 export default function Register() {
 const navigate = useNavigate();
@@ -31,7 +32,7 @@ const navigate = useNavigate();
 
       if (res.success) {
         alert("Registration successful! Please login.");
-        navigate("/login");
+        navigate("/");
       } else {
         setError(res.message || "Registration failed");
       }
@@ -99,7 +100,7 @@ const navigate = useNavigate();
           </form>
 
           <p className="switch-auth">
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account? <Link to="/">Login</Link>
           </p>
         </div>
       </main>

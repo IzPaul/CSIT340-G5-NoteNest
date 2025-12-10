@@ -6,7 +6,7 @@ import "../css/navbar.css";
 export default function Navbar({ showSearch = false, onSearch }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const isLoginPage = location.pathname === "/";
+  const isLoginPage = location.pathname === "/" || location.pathname === "/login";
 
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -49,7 +49,10 @@ export default function Navbar({ showSearch = false, onSearch }) {
       )}
 
       {!isLoginPage && (
-        <button onClick={() => navigate("/")} className="logout-btn">
+        <button onClick={() => {
+          localStorage.removeItem("user");
+          navigate("/")
+        }} className="logout-btn">
           Logout
         </button>
       )}

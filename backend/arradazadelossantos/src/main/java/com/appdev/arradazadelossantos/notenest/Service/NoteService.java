@@ -14,8 +14,8 @@ public class NoteService {
         this.noteRepository = noteRepository;
     }
 
-    public List<Note> getNotesByUser(Long userID) {
-        return noteRepository.findByUserUserID(userID);
+    public List<Note> getNotesByUser(Long userId) {
+        return noteRepository.findByUserUserId(userId);
     }
 
     public Note getNoteByIdOwnedByUser(Long noteID, Long userID) {
