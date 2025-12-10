@@ -8,10 +8,6 @@ import org.springframework.http.ResponseEntity;
 import com.appdev.arradazadelossantos.notenest.Entity.User;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -41,6 +37,23 @@ public class NoteController {
         note.getUser().setUserId(userId);
         Note savedNote = noteService.createNote(note);
         return ResponseEntity.ok(savedNote);
+    }
+
+    @PutMapping("/{noteId}/user/{userId}")
+    public ResponseEntity<Note> updateNote(
+        @PathVariable Long noteId,
+        @PathVariable Long userId,
+        @RequestBody Note updatedNote) {
+    Note note = noteService.updateNote(noteId, updatedNote, userId);
+    return ResponseEntity.ok(note);
+    }
+
+    @DeleteMapping("/{noteId}/user/{userId}")
+    public ResponseEntity<Void> deleteNote(
+        @PathVariable Long noteId,
+        @PathVariable Long userId) {
+    noteService.deleteNote(noteId, userId);
+    return ResponseEntity.ok().build();
     }
 
     

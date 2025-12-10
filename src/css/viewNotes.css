@@ -198,41 +198,59 @@ body {
   border: 1px solid #30363d;
 }
 
-.view-card .back-btn {
-  padding: 14px 36px;
-  background: #4A90E2;
-  color: white;
+.edit-title-input {
+  font-size: 2.5rem;
+  font-weight: 800;
+  width: 100%;
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.edit-input, .edit-textarea, .edit-content-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.edit-content-textarea {
+  min-height: 400px;
+  font-family: 'Courier New', monospace;
+}
+
+.view-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.edit-btn, .save-btn, .cancel-btn, .delete-btn, .back-btn {
+  padding: 8px 16px;
   border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
   transition: all 0.2s;
 }
 
-.view-card .back-btn:hover {
+.edit-btn, .save-btn, .back-btn { background: #4A90E2; color: white; }
+.cancel-btn { background: #e2e8f0; }
+.delete-btn { background: #ef4444; color: white; }
+
+.view-card .save-btn:hover ,.edit-btn:hover, .back-btn:hover {
   background: #2563eb;
   transform: translateY(-2px);
 }
 
-.back-btn {
-  min-width: 120px;
-  padding: 15px;
-  background: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.back-btn:hover {
-  background: #4338ca;
+.view-card .delete-btn:hover {
+  background: #e20101;
   transform: translateY(-2px);
 }
 
-.back-btn:active {
-  transform: translateY(0);
+.view-card .cancel-btn:hover {
+  background: #a5a7a9;
+  transform: translateY(-2px);
 }

@@ -51,4 +51,25 @@ export const api = {
     return res.json();
   },
 
+  updateNote: async (noteId, noteData) => {
+  const userId = getUserId();
+  if (!userId) throw new Error("Not logged in");
+  const res = await fetch(`${API_URL}/notes/${noteId}/user/${userId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(noteData),
+  });
+  if (!res.ok) throw new Error("Update failed");
+  return res.json();
+},
+
+deleteNote: async (noteId) => {
+  const userId = getUserId();
+  if (!userId) throw new Error("Not logged in");
+  const res = await fetch(`${API_URL}/notes/${noteId}/user/${userId}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Delete failed");
+},
+
 };
