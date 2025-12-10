@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar showSearch={true} />
+      <Navbar showSearch={false} />
       <main className="dashboard-wrapper">
         <div className="dashboard-content">
           <h1>Welcome back!</h1>

@@ -1,25 +1,45 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { api } from "../api/api";
 import "../css/register.css";
 
 export default function Register() {
-  const navigate = useNavigate();
+const navigate = useNavigate();
+  const [form, setForm] = useState({ username: "", email: "", password: "", confirmPassword: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
+  };
 
-  const handleRegister = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+    if (form.password !== form.confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
-    console.log("Account Created:", { name, email });
-    navigate("/login");
+    setLoading(true);
+    try {
+      const res = await api.register({
+        username: form.username,
+        email: form.email,
+        password: form.password,
+      });
+
+      if (res.success) {
+        alert("Registration successful! Please login.");
+        navigate("/login");
+      } else {
+        setError(res.message || "Registration failed");
+      }
+    } catch (err) {
+      setError("Network error. Is backend running on port 8080?");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -30,45 +50,51 @@ export default function Register() {
           <h1>Create an Account</h1>
           <p>Join NoteNest and start organizing your notes</p>
 
-          <form onSubmit={handleRegister}>
+          {error && <div className="error-alert">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
             <input
               className="input"
+              name="username"
               type="text"
               placeholder="Username"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={form.username}
+              onChange={handleChange}
               required
             />
 
             <input
               className="input"
+              name="email"
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={form.email}
+              onChange={handleChange}
               required
             />
 
             <input
               className="input"
+              name="password"
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={form.password}
+              onChange={handleChange}
               required
             />
 
             <input
               className="input"
+              name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={form.confirmPassword}
+              onChange={handleChange}
               required
             />
 
-            <button className="primary-btn" type="submit">
-              Create Account
+            <button className="primary-btn" type="submit" disabled={loading}>
+              {loading ? "Creating..." : "Create Account"}
             </button>
           </form>
 

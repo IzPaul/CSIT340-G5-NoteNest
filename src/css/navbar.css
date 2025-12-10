@@ -24,6 +24,18 @@
 
 .logo-btn:hover { opacity: 0.8; }
 
+.nav-btn {
+  all: unset;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 17px;
+  color: #1f2937;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2s;
+}
+
+.nav-btn:hover { opacity: 0.8; }
+
 .search-input {
   flex: 1;
   max-width: 520px;
