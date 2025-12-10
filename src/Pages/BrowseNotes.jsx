@@ -96,7 +96,7 @@ export default function BrowseNotes() {
                     </div>
                   </div>
                   <div className="note-actions">
-                    <button className="view-btn" onClick={() => handleView(note.Id)}>
+                    <button className="view-btn" onClick={() => handleView(note.noteId)}>
                       View
                     </button>
                     <button className="download-btn" onClick={() => handleDownload(note)}>

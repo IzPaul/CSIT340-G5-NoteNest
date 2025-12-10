@@ -20,7 +20,7 @@ export default function ViewNotes() {
         <Navbar showSearch={false} />
         <main style={{ textAlign: "center", paddingTop: "100px" }}>
           <p>Note not found.</p>
-          <button onClick={() => navigate("/browse")}>Back to Browse Notes</button>
+          <button class="back-btn" onClick={() => navigate("/browse")}>Back to Browse Notes</button>
         </main>
       </>
     );
@@ -56,7 +56,7 @@ export default function ViewNotes() {
           <div class="view-scroll">
             <div className="note-meta">
               <p className="note-subject">{note.subject}</p>
-              <p className="note-date">{note.date}</p>
+              <p className="note-date">{note.uploadDate}</p>
             </div>
 
             <p className="note-description">{note.description}</p>
