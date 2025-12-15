@@ -1,4 +1,3 @@
-// ViewNotes.jsx — FINAL WITH EDIT + DELETE
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useNotes } from "../Context/NotesContext.jsx";
@@ -112,7 +111,6 @@ export default function ViewNotes() {
           </div>
 
           <div className="view-scroll">
-            {/* Subject */}
             <div className="note-meta">
               {mode === "view" ? (
                 <p className="note-subject">{note.subject}</p>

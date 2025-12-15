@@ -122,10 +122,10 @@ export default function Upload() {
                               placeholder="Brief description of this note..." rows="3" />
 
                     <label>Upload File <span className="required">*</span></label>
-                    <input type="file" id="file" accept=".pdf,.doc,.docx,.txt,.md"
+                    <input type="file" id="file" accept=".txt,.md"
                           onChange={(e) => setFile(e.target.files?.[0] || null)} style={{display: "none"}} />
                     <label htmlFor="file" className="file-upload-label">
-                      {file ? <>Selected: {file.name}</> : "Click to choose file (PDF, DOC, TXT, MD)"}
+                      {file ? <>Selected: {file.name}</> : "Click to choose file (TXT, MD)"}
                     </label>
                   </>
                 ) : (
